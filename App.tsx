@@ -1,20 +1,21 @@
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
 
-const App: React.FC = () => (
-  <View style={styles.container}>
-    <Text>Golden Raspberry Awards</Text>
-    <StatusBar style="auto" />
-  </View>
-)
+import { DashboardScreen, MoviesScreen } from '~/screens'
 
-export default App
+const Drawer = createDrawerNavigator()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+export default function App() {
+  return (
+    <>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Dashboard">
+          <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+          <Drawer.Screen name="Movies" component={MoviesScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </>
+  )
+}
