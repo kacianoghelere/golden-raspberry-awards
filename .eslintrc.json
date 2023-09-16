@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "extends": [
+    "universe/native"
+  ],
+  "rules": {
+    "prettier/prettier": 0,
+    "react-native/no-inline-styles": 0,
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-unused-vars": "error",
+    "no-console": "error",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "no-multiple-empty-lines": "error",
+    "no-multi-spaces": "error",
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
+}
