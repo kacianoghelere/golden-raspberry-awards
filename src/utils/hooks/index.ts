@@ -1,0 +1,1 @@
+export { default as useMoviesList } from './use-movies-list'
