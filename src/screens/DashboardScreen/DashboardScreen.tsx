@@ -1,12 +1,23 @@
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView } from 'react-native'
 
-const DashboardScreen: React.FC = () => {
-  return (
-    <View>
-      <Text>DashboardScreen</Text>
-    </View>
-  )
-}
+import {
+  IntervalBetweenWins,
+  TopStudiosWithWinners,
+  WinnersByYear,
+  YearsWithMultipleWinners
+} from '~/components/dashboard'
+
+const DashboardScreen: React.FC = () => (
+  <ScrollView>
+    <GS.Box p="$4">
+      <YearsWithMultipleWinners />
+      <TopStudiosWithWinners />
+      <IntervalBetweenWins />
+      <WinnersByYear />
+    </GS.Box>
+  </ScrollView>
+)
 
 export default DashboardScreen

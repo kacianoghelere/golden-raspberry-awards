@@ -1,0 +1,1 @@
+export { generateMovie, generateMovies } from './movie-generator'

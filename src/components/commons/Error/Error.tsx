@@ -1,10 +1,10 @@
-import { Center, Text } from '@gluestack-ui/themed'
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 const Error: React.FC = () => (
-  <Center flex={1}>
-    <Text>Ocorreu um erro ao carregar as informações</Text>
-  </Center>
+  <GS.Center flex={1}>
+    <GS.Text>Ocorreu um erro ao carregar as informações</GS.Text>
+  </GS.Center>
 )
 
 export default Error

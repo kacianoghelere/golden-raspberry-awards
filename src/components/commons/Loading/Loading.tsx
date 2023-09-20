@@ -1,10 +1,10 @@
-import { Center, Spinner } from '@gluestack-ui/themed'
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 const Loading: React.FC = () => (
-  <Center flex={1}>
-    <Spinner />
-  </Center>
+  <GS.Center flex={1}>
+    <GS.Spinner />
+  </GS.Center>
 )
 
 export default Loading

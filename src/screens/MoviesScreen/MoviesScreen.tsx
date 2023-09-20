@@ -1,74 +1,57 @@
-import { Box, HStack, Text, VStack } from '@gluestack-ui/themed'
-import React from 'react'
-import { FlatList, ListRenderItemInfo } from 'react-native'
+import * as GS from '@gluestack-ui/themed'
+import React, { useLayoutEffect } from 'react'
 
-import { Movie } from '~/@types/movies/movies-list'
-import { Error, Loading } from '~/components/commons'
-import { useMoviesList } from '~/utils/hooks'
+import * as MoviesListModule from '~/store/modules/movies/list'
+import { useDispatch, useSelector } from '~/utils/hooks'
+import { Error } from '~/components/commons'
+import {
+  MoviesList,
+  MoviesListFooter,
+  MoviesListHeader
+} from '~/components/movies'
 
 const MoviesScreen: React.FC = () => {
-  const { isLoading, error, data } = useMoviesList()
+  const dispatch = useDispatch()
 
-  if (isLoading) return (
-    <Loading />
-  )
+  useLayoutEffect(() => {
+    dispatch(MoviesListModule.AsyncActions.fetchMovies({}))
+  }, [])
+
+  const { data, error, isLoading } = useSelector(({ movies }) => movies)
 
   if (error) return (
     <Error />
   )
 
-  const renderItem = ({ item }: ListRenderItemInfo<Movie>) => (
-    <Box
-      borderBottomWidth='$1'
-      py='$2'
-      px='$3'
-    >
-      <HStack space='md' justifyContent='space-between'>
-        {/* <Avatar size='md'>
-          <AvatarImage source={{ uri: item.avatarUrl }} />
-        </Avatar> */}
-        <VStack>
-          <Text
-            color='$coolGray800'
-            fontWeight='$bold'
-            sx={{
-              _dark: {
-                color: '$warmGray100'
-              }
-            }}
-          >
-            {item.title}
-          </Text>
-          <Text
-            color='$coolGray600'
-            sx={{
-              _dark: {
-                color: '$warmGray200'
-              }
-            }}
-          >
-            {item.studios.join(', ')}
-          </Text>
-        </VStack>
-        <Text
-          alignSelf='flex-start'
-          color='$coolGray800'
-          fontSize='$xs'
-        >
-          {item.year}
-        </Text>
-      </HStack>
-    </Box>
-  )
+  const handleGoToNextPage = () => {
+    dispatch(MoviesListModule.AsyncActions.fetchNextPage())
+  }
+
+  const handleGoToPreviousPage = () => {
+    dispatch(MoviesListModule.AsyncActions.fetchPreviousPage())
+  }
+
+  const handleSearch = (params: { onlyWinners: boolean, year: string }) => {
+    dispatch(MoviesListModule.AsyncActions.fetchMovies(params))
+  }
 
   return (
-    <Box p="$0">
-      <FlatList<Movie>
-        data={data?.data.content ?? []}
-        keyExtractor={(movie, index) => `movie-${movie.id}-${index}`}
-        renderItem={renderItem}
-      />
-    </Box>
+    <MoviesList
+      ListEmptyComponent={<GS.Text>Empty :(</GS.Text>}
+      ListFooterComponent={() => (
+        <MoviesListFooter
+          currentPage={data?.number}
+          totalPages={data?.totalPages}
+          onNextPage={handleGoToNextPage}
+          onPreviousPage={handleGoToPreviousPage}
+        />
+      )}
+      ListHeaderComponent={() => (
+        <MoviesListHeader onSearch={handleSearch} />
+      )}
+      movies={data?.content ?? []}
+      refreshing={isLoading}
+    />
   )
 }
 
