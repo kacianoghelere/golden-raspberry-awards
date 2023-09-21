@@ -1,7 +1,7 @@
 import { AsyncThunk, SerializedError, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { MoviesList } from '~/@types/movies/movies-list'
-import { MoviesListState } from '~/@types/store/modules/movies-list'
+import { MoviesList } from '~/@types/movies'
+import { MoviesListState } from '~/@types/store/modules/movies/list'
 import { RootState } from '~/store'
 import {
   GetMoviesListParams,
@@ -14,7 +14,7 @@ const initialState: MoviesListState = {
   isLoading: false
 }
 
-const moduleName = 'movies-list'
+const moduleName = 'movies/list'
 
 const fetchMovies = createAsyncThunk<MoviesList, GetMoviesListParams>(
   `${moduleName}/fetch`,

@@ -3,7 +3,7 @@ import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 import { FlatList, FlatListProps } from 'react-native'
 
-import { Movie } from '~/@types/movies/movies-list'
+import { Movie } from '~/@types/movies'
 import MoviesListItem from './MoviesListItem/MoviesListItem'
 
 type OmittedProps = 'data' | 'keyExtractor' | 'renderItem'

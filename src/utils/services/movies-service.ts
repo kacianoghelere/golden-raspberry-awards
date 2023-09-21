@@ -1,7 +1,5 @@
-import axios from 'axios'
-
-import { MoviesList } from '~/@types/movies/movies-list'
-import { API_BASE_URL } from '~/utils/constants/api'
+import { MoviesList } from '~/@types/movies'
+import { getApiData } from '~/utils/services/http-service'
 
 export interface GetMoviesListParams {
   onlyWinners?: boolean,
@@ -15,20 +13,11 @@ export const getMoviesList = async ({
   page = 1,
   size = 20,
   year = ''
-}: GetMoviesListParams = {}) => {
-  const response = await axios.get<MoviesList>(API_BASE_URL, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-type': 'application/json'
-    },
-    params: {
-      winner: onlyWinners ? 'true' : null,
-      page,
-      size,
-      year
-    }
+}: GetMoviesListParams = {}) => (
+  await getApiData<MoviesList>({
+    winner: onlyWinners ? 'true' : null,
+    page,
+    size,
+    year
   })
-
-  return response
-}
+)

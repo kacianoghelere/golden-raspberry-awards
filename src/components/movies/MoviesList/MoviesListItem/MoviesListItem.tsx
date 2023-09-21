@@ -10,7 +10,7 @@ import {
 } from '@gluestack-ui/themed'
 import React from 'react'
 
-import { Movie } from '~/@types/movies/movies-list'
+import { Movie } from '~/@types/movies'
 
 export interface MoviesListItemProps {
   movie: Movie

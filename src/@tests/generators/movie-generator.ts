@@ -1,4 +1,4 @@
-import { Movie } from '~/@types/movies/movies-list'
+import { Movie } from '~/@types/movies'
 
 import { generateMultiple } from './utils'
 
