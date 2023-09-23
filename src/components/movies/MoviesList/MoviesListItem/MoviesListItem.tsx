@@ -12,11 +12,11 @@ import React from 'react'
 
 import { Movie } from '~/@types/movies'
 
-export interface MoviesListItemProps {
+export interface Props {
   movie: Movie
 }
 
-const MoviesListItem: React.FC<MoviesListItemProps> = ({ movie }) => (
+const MoviesListItem: React.FC<Props> = ({ movie }) => (
   <Box
     borderBottomColor="$coolGray200"
     borderBottomWidth='$1'

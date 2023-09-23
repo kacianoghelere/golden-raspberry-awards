@@ -1,14 +1,14 @@
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
-export interface MoviesListFooterProps {
+export interface Props {
   currentPage?: number,
   onNextPage?: () => void,
   onPreviousPage?: () => void,
   totalPages?: number
 }
 
-const MoviesListFooter: React.FC<MoviesListFooterProps> = ({
+const MoviesListFooter: React.FC<Props> = ({
   currentPage = 1,
   onNextPage = () => { },
   onPreviousPage = () => { },

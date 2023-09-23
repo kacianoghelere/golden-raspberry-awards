@@ -5,11 +5,11 @@ import { useDebounce } from '~/utils/hooks'
 import WinnersSwitch from './WinnersSwitch/WinnersSwitch'
 import YearInput from './YearInput/YearInput'
 
-export interface MoviesListHeaderProps {
+export interface Props {
   onSearch: (params: { onlyWinners: boolean, year: string }) => void
 }
 
-const MoviesListHeader: React.FC<MoviesListHeaderProps> = ({
+const MoviesListHeader: React.FC<Props> = ({
   onSearch = (_params) => { }
 }) => {
   const [year, setYear] = React.useState<string>('')

@@ -1,12 +1,12 @@
 import { Input, InputField, Text, VStack } from '@gluestack-ui/themed'
 import React from 'react'
 
-export interface YearInputProps {
+export interface Props {
   onChangeText: (value: string) => void
   value: string
 }
 
-const YearInput: React.FC<YearInputProps> = ({
+const YearInput: React.FC<Props> = ({
   onChangeText,
   value
 }) => (

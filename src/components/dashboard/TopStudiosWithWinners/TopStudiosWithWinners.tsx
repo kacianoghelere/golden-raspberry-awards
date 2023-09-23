@@ -1,11 +1,11 @@
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
-export interface TopStudiosWithWinnersProps {
+export interface Props {
   limit?: number
 }
 
-const TopStudiosWithWinners: React.FC<TopStudiosWithWinnersProps> = ({
+const TopStudiosWithWinners: React.FC<Props> = ({
   limit = 3
 }) => (
   <GS.Box

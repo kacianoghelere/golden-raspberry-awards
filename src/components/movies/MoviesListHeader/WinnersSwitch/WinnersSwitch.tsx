@@ -1,12 +1,12 @@
 import { Switch, Text, VStack } from '@gluestack-ui/themed'
 import React from 'react'
 
-export interface WinnersSwitchProps {
+export interface Props {
   onToggle: () => void,
   value: boolean
 }
 
-const WinnersSwitch: React.FC<WinnersSwitchProps> = ({ onToggle, value }) => (
+const WinnersSwitch: React.FC<Props> = ({ onToggle, value }) => (
   <VStack alignItems="flex-start">
     <Text
       color='$coolGray800'

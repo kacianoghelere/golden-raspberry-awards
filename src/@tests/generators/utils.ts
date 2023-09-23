@@ -1,6 +1,6 @@
 export const generateMultiple = (
   quantity = 1,
-  callback = (id: number) => ({ id })
+  callback: (id: number) => any = (id) => ({ id })
 ) => (
   Array(quantity)
     .fill(1)

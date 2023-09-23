@@ -1,20 +1,17 @@
 /* eslint-disable import/order */
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
-import { FlatList, FlatListProps } from 'react-native'
+import { FlatList } from 'react-native'
 
+import { CustomFlatListProps } from '~/@types/components'
 import { Movie } from '~/@types/movies'
 import MoviesListItem from './MoviesListItem/MoviesListItem'
 
-type OmittedProps = 'data' | 'keyExtractor' | 'renderItem'
-
-type CustomFlatListProps = Omit<FlatListProps<Movie>, OmittedProps>
-
-export interface MoviesListProps extends CustomFlatListProps {
+export interface Props extends CustomFlatListProps<Movie> {
   movies: Movie[]
 }
 
-const MoviesList: React.FC<MoviesListProps> = ({ movies, ...props }) => (
+const MoviesList: React.FC<Props> = ({ movies, ...props }) => (
   <GS.Box p="$0">
     <FlatList<Movie>
       {...props}
