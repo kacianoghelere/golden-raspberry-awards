@@ -1,9 +1,9 @@
-import * as GS from '@gluestack-ui/themed'
 import React, { useLayoutEffect } from 'react'
 
 import * as YearsWithMultipleWinnersModule from '~/store/modules/dashboard/years-with-multiple-winners'
 import { useDispatch, useSelector } from '~/utils/hooks'
 import { Error, Loading } from '~/components/commons'
+import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import YearsWithMultipleWinnersList from './YearsWithMultipleWinnersList/YearsWithMultipleWinnersList'
 
 export interface Props {
@@ -23,31 +23,20 @@ const YearsWithMultipleWinners: React.FC<Props> = ({
     dashboard.yearsWithMultipleWinners
   ))
 
-  if (isLoading) return (
-    <Loading />
-  )
-
-  if (error || !data?.years) return (
-    <Error />
-  )
+  const hasError: boolean = !!(error || !data?.years)
 
   return (
-    <GS.Box
-      borderWidth="$1"
-      mb="$3"
-      p="$4"
-    >
-      <GS.Text
-        fontSize="$lg"
-        fontWeight="$bold"
-        marginBottom="$3"
-      >
-        List Years With Multiple Winners
-      </GS.Text>
-      <YearsWithMultipleWinnersList
-        yearsWithMultipleWinners={data.years.slice(0, limit)}
-      />
-    </GS.Box>
+    <DashboardWidget title="List Years With Multiple Winners">
+      {isLoading ? (
+        <Loading />
+      ) : hasError ? (
+        <Error />
+      ) : (
+        <YearsWithMultipleWinnersList
+          yearsWithMultipleWinners={data!.years.slice(0, limit)}
+        />
+      )}
+    </DashboardWidget>
   )
 }
 

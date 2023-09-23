@@ -11,14 +11,14 @@ const YearsWithMultipleWinnersListItem: React.FC<Props> = ({
   yearWithMultipleWinners
 }) => (
   <HStack
-    borderBottomColor="$trueGray300"
-    borderBottomWidth="$1"
+    borderTopColor="$trueGray300"
+    borderTopWidth="$1"
     justifyContent='space-between'
     padding="$3"
     space='md'
   >
-    <Text fontWeight='$bold'>{yearWithMultipleWinners.year}</Text>
-    <Text fontWeight='$bold'>{yearWithMultipleWinners.winnerCount}</Text>
+    <Text>{yearWithMultipleWinners.year}</Text>
+    <Text>{yearWithMultipleWinners.winnerCount}</Text>
   </HStack>
 )
 

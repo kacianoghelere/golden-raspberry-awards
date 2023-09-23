@@ -1,9 +1,9 @@
-import * as GS from '@gluestack-ui/themed'
 import React, { useLayoutEffect } from 'react'
 
 import * as IntervalBetweenWinsModule from '~/store/modules/dashboard/max-min-win-interval-for-producers'
 import { useDispatch, useSelector } from '~/utils/hooks'
 import { Error, Loading } from '~/components/commons'
+import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import WinIntervalInfo from './WinIntervalInfo/WinIntervalInfo'
 
 const IntervalBetweenWins: React.FC = () => {
@@ -26,18 +26,9 @@ const IntervalBetweenWins: React.FC = () => {
   )
 
   return (
-    <GS.Box
-      borderColor="trueGray300"
-      borderWidth="$1"
-      mb="$3"
-      p="$4"
+    <DashboardWidget
+      title="Producers with longest ands shortest interval between wins"
     >
-      <GS.Text
-        fontSize="$xl"
-        fontWeight="$bold"
-      >
-        Producers with longest ands shortest interval between wins
-      </GS.Text>
       <WinIntervalInfo
         title="Maximum"
         intervalInfo={data.max[0]}
@@ -46,7 +37,7 @@ const IntervalBetweenWins: React.FC = () => {
         title="Minimum"
         intervalInfo={data.min[0]}
       />
-    </GS.Box>
+    </DashboardWidget>
   )
 }
 

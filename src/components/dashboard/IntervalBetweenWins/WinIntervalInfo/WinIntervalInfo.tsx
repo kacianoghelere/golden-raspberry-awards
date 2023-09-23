@@ -20,9 +20,12 @@ const WinIntervalInfo: React.FC<Props> = ({
     >
       {title}
     </GS.Text>
-    <GS.Box borderWidth="$1">
+    <GS.Box
+      borderColor="$trueGray300"
+      borderWidth="$1"
+    >
       <GS.HStack
-        backgroundColor="$white"
+        backgroundColor="$coolGray50"
         borderBottomColor="$trueGray300"
         borderBottomWidth="$1"
         justifyContent="space-between"
