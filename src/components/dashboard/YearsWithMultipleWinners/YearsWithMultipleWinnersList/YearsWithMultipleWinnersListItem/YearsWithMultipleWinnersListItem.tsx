@@ -11,7 +11,7 @@ const YearsWithMultipleWinnersListItem: React.FC<Props> = ({
   yearWithMultipleWinners
 }) => (
   <HStack
-    borderBottomColor="$coolGray100"
+    borderBottomColor="$trueGray300"
     borderBottomWidth="$1"
     justifyContent='space-between'
     padding="$3"
