@@ -14,9 +14,9 @@ const YearsWithMultipleWinnersList: React.FC<Props> = ({
   yearsWithMultipleWinners
 }) => (
   <GS.Box
-    borderBottomColor="$blueGray100"
-    borderBottomWidth="$1"
-    padding="$0"
+    borderRadius="$lg"
+    borderColor="$trueGray300"
+    borderWidth="$1"
   >
     <YearsWithMultipleWinnersListHeader />
     {yearsWithMultipleWinners.map((item, index) => (

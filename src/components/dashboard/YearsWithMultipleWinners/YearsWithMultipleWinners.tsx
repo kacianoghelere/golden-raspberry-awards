@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useMemo } from 'react'
 
 import * as YearsWithMultipleWinnersModule from '~/store/modules/dashboard/years-with-multiple-winners'
 import { useDispatch, useSelector } from '~/utils/hooks'
@@ -19,11 +19,19 @@ const YearsWithMultipleWinners: React.FC<Props> = ({
     dispatch(YearsWithMultipleWinnersModule.AsyncActions.fetchData())
   }, [])
 
-  const { data, error, isLoading } = useSelector(({ dashboard }) => (
+  const { error, isLoading } = useSelector(({ dashboard }) => (
     dashboard.yearsWithMultipleWinners
   ))
 
-  const hasError: boolean = !!(error || !data?.years)
+  const yearsWithMultipleWinners = useSelector(({
+    dashboard: { yearsWithMultipleWinners }
+  }) => (
+    yearsWithMultipleWinners.data?.years?.slice(0, limit) || []
+  ))
+
+  const hasError = useMemo<boolean>(() => (
+    !!(error || !yearsWithMultipleWinners.length)
+  ), [error, yearsWithMultipleWinners.length])
 
   return (
     <DashboardWidget title="List Years With Multiple Winners">
@@ -33,7 +41,7 @@ const YearsWithMultipleWinners: React.FC<Props> = ({
         <Error />
       ) : (
         <YearsWithMultipleWinnersList
-          yearsWithMultipleWinners={data!.years.slice(0, limit)}
+          yearsWithMultipleWinners={yearsWithMultipleWinners}
         />
       )}
     </DashboardWidget>

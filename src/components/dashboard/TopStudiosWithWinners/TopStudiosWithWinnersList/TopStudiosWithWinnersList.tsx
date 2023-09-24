@@ -14,9 +14,9 @@ const TopStudiosWithWinnersList: React.FC<Props> = ({
   studiosWithWinCount
 }) => (
   <GS.Box
-    borderBottomColor="$blueGray100"
-    borderBottomWidth="$1"
-    padding="$0"
+    borderRadius="$lg"
+    borderColor="$trueGray300"
+    borderWidth="$1"
   >
     <TopStudiosWithWinnersListHeader />
     {studiosWithWinCount.map((item, index) => (

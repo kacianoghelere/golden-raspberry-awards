@@ -21,6 +21,7 @@ const WinIntervalInfo: React.FC<Props> = ({
       {title}
     </GS.Text>
     <GS.Box
+      borderRadius="$lg"
       borderColor="$trueGray300"
       borderWidth="$1"
     >
@@ -28,6 +29,8 @@ const WinIntervalInfo: React.FC<Props> = ({
         backgroundColor="$coolGray50"
         borderBottomColor="$trueGray300"
         borderBottomWidth="$1"
+        borderTopLeftRadius="$lg"
+        borderTopRightRadius="$lg"
         justifyContent="space-between"
         padding="$3"
       >
@@ -35,15 +38,15 @@ const WinIntervalInfo: React.FC<Props> = ({
         <GS.Text fontWeight="$bold">Interval</GS.Text>
       </GS.HStack>
       <GS.HStack
-        borderBottomColor="trueGray300"
-        borderBottomWidth="$1"
+        borderTopColor="$trueGray300"
+        borderTopWidth="$1"
         justifyContent='space-between'
         padding="$3"
         space='md'
       >
         <GS.Text>{intervalInfo.producer}</GS.Text>
         <GS.Text>
-          {intervalInfo.previousWin} ~ {intervalInfo.followingWin}
+          {intervalInfo.previousWin}~{intervalInfo.followingWin}
         </GS.Text>
       </GS.HStack>
     </GS.Box>

@@ -6,6 +6,8 @@ const YearsWithMultipleWinnersListHeader: React.FC = () => (
     backgroundColor="$coolGray50"
     borderBottomColor="$coolGray100"
     borderBottomWidth="$1"
+    borderTopLeftRadius="$lg"
+    borderTopRightRadius="$lg"
     justifyContent='space-between'
     padding="$3"
     space='md'
