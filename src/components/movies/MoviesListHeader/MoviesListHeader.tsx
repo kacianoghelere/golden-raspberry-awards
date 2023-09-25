@@ -2,8 +2,8 @@ import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 import { useDebounce } from '~/utils/hooks'
+import { YearInput } from '~/components/commons'
 import WinnersSwitch from './WinnersSwitch/WinnersSwitch'
-import YearInput from './YearInput/YearInput'
 
 export interface Props {
   onSearch: (params: { onlyWinners: boolean, year: string }) => void

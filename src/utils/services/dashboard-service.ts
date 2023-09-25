@@ -28,7 +28,7 @@ export const getMaxMinWinIntervalForProducers = async () => (
 )
 
 export interface GetWinnerMoviesByYearParams {
-  year: string
+  year: number
 }
 
 export const getWinnerMoviesByYear = async ({

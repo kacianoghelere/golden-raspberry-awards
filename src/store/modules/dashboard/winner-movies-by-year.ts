@@ -32,33 +32,22 @@ export const AsyncActions = {
   fetchData
 }
 
-type GenericAsyncThunk = typeof fetchData
-
 const moviesSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addMatcher<ReturnType<GenericAsyncThunk['pending']>>(
-        ({ type }) => type.endsWith('/pending'),
-        (state) => {
-          state.error = undefined
-          state.isLoading = true
-        }
-      )
-      .addMatcher<ReturnType<GenericAsyncThunk['fulfilled']>>(
-        ({ type }) => type.endsWith('/fulfilled'),
-        (state, { payload }) => {
-          state.data = payload
-          state.isLoading = false
-        }
-      )
-      .addMatcher<ReturnType<GenericAsyncThunk['rejected']>>(
-        ({ type }) => type.endsWith('/rejected'),
-        (state, { error }) => {
-          state.error = error as SerializedError
-          state.isLoading = false
-        }
-      )
+      .addCase(fetchData.pending, (state) => {
+        state.error = undefined
+        state.isLoading = true
+      })
+      .addCase(fetchData.fulfilled, (state, { payload }) => {
+        state.data = payload
+        state.isLoading = false
+      })
+      .addCase(fetchData.rejected, (state, { error }) => {
+        state.error = error as SerializedError
+        state.isLoading = false
+      })
   },
   name: moduleName,
   reducers: {}
