@@ -14,7 +14,7 @@ const initialState: YearsWithMultipleWinnersState = {
   isLoading: false
 }
 
-const moduleName = 'dashboard/studios-with-win-count'
+const moduleName = 'dashboard/years-with-multiple-winners'
 
 const fetchData = createAsyncThunk<YearsWithMultipleWinners>(
   `${moduleName}/fetch`,

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 
 import * as IntervalBetweenWinsModule from '~/store/modules/dashboard/max-min-win-interval-for-producers'
 import { useDispatch, useSelector } from '~/utils/hooks'
@@ -9,34 +9,35 @@ import WinIntervalInfo from './WinIntervalInfo/WinIntervalInfo'
 const IntervalBetweenWins: React.FC = () => {
   const dispatch = useDispatch()
 
-  useLayoutEffect(() => {
+  const onMount = () => {
     dispatch(IntervalBetweenWinsModule.AsyncActions.fetchData())
-  }, [])
+  }
 
   const { data, error, isLoading } = useSelector(({ dashboard }) => (
     dashboard.maxMinWinIntervalForProducers
   ))
 
-  if (isLoading) return (
-    <Loading />
-  )
-
-  if (error || !data) return (
-    <Error />
-  )
-
   return (
     <DashboardWidget
+      onMount={onMount}
       title="Producers with longest ands shortest interval between wins"
     >
-      <WinIntervalInfo
-        title="Maximum"
-        intervalInfo={data.max[0]}
-      />
-      <WinIntervalInfo
-        title="Minimum"
-        intervalInfo={data.min[0]}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : error ? (
+        <Error />
+      ) : data ? (
+        <>
+          <WinIntervalInfo
+            title="Maximum"
+            intervalInfo={data.max[0]}
+          />
+          <WinIntervalInfo
+            title="Minimum"
+            intervalInfo={data.min[0]}
+          />
+        </>
+      ) : null}
     </DashboardWidget>
   )
 }

@@ -11,7 +11,7 @@ import {
 
 const DashboardScreen: React.FC = () => (
   <ScrollView>
-    <GS.Box p="$4">
+    <GS.Box padding="$3">
       <YearsWithMultipleWinners />
       <TopStudiosWithWinners />
       <IntervalBetweenWins />

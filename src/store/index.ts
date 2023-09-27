@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import modules from './modules'
 
 export const store = configureStore({
+  devTools: true,
   reducer: modules
 })
 

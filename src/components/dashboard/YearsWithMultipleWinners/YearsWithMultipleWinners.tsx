@@ -1,7 +1,7 @@
-import React, { useLayoutEffect, useMemo } from 'react'
+import React from 'react'
 
 import * as YearsWithMultipleWinnersModule from '~/store/modules/dashboard/years-with-multiple-winners'
-import { useDispatch, useSelector } from '~/utils/hooks'
+import { useDispatch, useSelector, useSlicedList } from '~/utils/hooks'
 import { Error, Loading } from '~/components/commons'
 import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import YearsWithMultipleWinnersList from './YearsWithMultipleWinnersList/YearsWithMultipleWinnersList'
@@ -15,35 +15,30 @@ const YearsWithMultipleWinners: React.FC<Props> = ({
 }) => {
   const dispatch = useDispatch()
 
-  useLayoutEffect(() => {
+  const onMount = () => {
     dispatch(YearsWithMultipleWinnersModule.AsyncActions.fetchData())
-  }, [])
+  }
 
-  const { error, isLoading } = useSelector(({ dashboard }) => (
+  const { data, error, isLoading } = useSelector(({ dashboard }) => (
     dashboard.yearsWithMultipleWinners
   ))
 
-  const yearsWithMultipleWinners = useSelector(({
-    dashboard: { yearsWithMultipleWinners }
-  }) => (
-    yearsWithMultipleWinners.data?.years?.slice(0, limit) || []
-  ))
-
-  const hasError = useMemo<boolean>(() => (
-    !!(error || !yearsWithMultipleWinners.length)
-  ), [error, yearsWithMultipleWinners.length])
+  const yearsWithMultipleWinners = useSlicedList(data?.years ?? [], limit)
 
   return (
-    <DashboardWidget title="List Years With Multiple Winners">
+    <DashboardWidget
+      onMount={onMount}
+      title="List Years With Multiple Winners"
+    >
       {isLoading ? (
         <Loading />
-      ) : hasError ? (
+      ) : error ? (
         <Error />
-      ) : (
+      ) : yearsWithMultipleWinners ? (
         <YearsWithMultipleWinnersList
           yearsWithMultipleWinners={yearsWithMultipleWinners}
         />
-      )}
+      ) : null}
     </DashboardWidget>
   )
 }

@@ -1,5 +1,5 @@
 import * as GS from '@gluestack-ui/themed'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 
 export interface Props {
   children?: React.ReactNode
@@ -12,7 +12,7 @@ const DashboardWidget: React.FC<Props> = ({
   onMount = () => { },
   title
 }) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     onMount()
   }, [])
 

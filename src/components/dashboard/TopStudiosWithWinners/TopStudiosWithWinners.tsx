@@ -1,43 +1,40 @@
-import React, { useLayoutEffect, useMemo } from 'react'
+import React from 'react'
 
 import * as StudiosWithWinCountModule from '~/store/modules/dashboard/studios-with-win-count'
-import { useDispatch, useSelector } from '~/utils/hooks'
+import { useDispatch, useSelector, useSlicedList } from '~/utils/hooks'
 import { Error, Loading } from '~/components/commons'
 import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import TopStudiosWithWinnersList from './TopStudiosWithWinnersList/TopStudiosWithWinnersList'
 
 export interface Props {
-  limit: number
+  limit?: number
 }
 
 const TopStudiosWithWinners: React.FC<Props> = ({ limit = 3 }) => {
   const dispatch = useDispatch()
 
-  useLayoutEffect(() => {
+  const onMount = () => {
     dispatch(StudiosWithWinCountModule.AsyncActions.fetchData())
-  }, [])
+  }
 
-  const { error, isLoading } = useSelector(({ dashboard }) => (
+  const { data, error, isLoading } = useSelector(({ dashboard }) => (
     dashboard.studiosWithWinCount
   ))
 
-  const studios = useSelector(({ dashboard: { studiosWithWinCount } }) => (
-    studiosWithWinCount.data?.studios?.slice(0, limit) || []
-  ))
-
-  const hasError = useMemo<boolean>(() => (
-    !!(error || !studios.length)
-  ), [error, studios.length])
+  const topStudios = useSlicedList(data?.studios, limit)
 
   return (
-    <DashboardWidget title={`Top ${limit} Studios With Winners`}>
+    <DashboardWidget
+      onMount={onMount}
+      title={`Top ${limit} Studios With Winners`}
+    >
       {isLoading ? (
         <Loading />
-      ) : hasError ? (
+      ) : error ? (
         <Error />
-      ) : (
-        <TopStudiosWithWinnersList studiosWithWinCount={studios} />
-      )}
+      ) : data ? (
+        <TopStudiosWithWinnersList studiosWithWinCount={topStudios} />
+      ) : null}
     </DashboardWidget>
   )
 }
