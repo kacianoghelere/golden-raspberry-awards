@@ -11,7 +11,7 @@ export interface GetMoviesListParams {
 export const getMoviesList = async ({
   onlyWinners = false,
   page = 1,
-  size = 20,
+  size = 50,
   year = ''
 }: GetMoviesListParams = {}) => (
   await getApiData<MoviesList>({

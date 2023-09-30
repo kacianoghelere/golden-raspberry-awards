@@ -1,19 +1,27 @@
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
-export interface Props {
-  currentPage?: number,
-  onNextPage?: () => void,
-  onPreviousPage?: () => void,
-  totalPages?: number
-}
+import * as MoviesListModule from '~/store/modules/movies/list'
+import { useDispatch, useSelector } from '~/utils/hooks'
 
-const MoviesListFooter: React.FC<Props> = ({
-  currentPage = 1,
-  onNextPage = () => { },
-  onPreviousPage = () => { },
-  totalPages = 1
-}) => {
+const MoviesListFooter: React.FC = () => {
+  const dispatch = useDispatch()
+
+  const { data } = useSelector(({ movies }) => movies)
+
+  const handleGoToNextPage = () => {
+    dispatch(MoviesListModule.AsyncActions.fetchNextPage())
+  }
+
+  const handleGoToPreviousPage = () => {
+    dispatch(MoviesListModule.AsyncActions.fetchPreviousPage())
+  }
+
+  const {
+    number: currentPage,
+    totalPages
+  } = data || {}
+
   if (!totalPages) return null
 
   return (
@@ -29,7 +37,7 @@ const MoviesListFooter: React.FC<Props> = ({
         action="primary"
         isDisabled={currentPage === 1}
         isFocusVisible={false}
-        onPress={onPreviousPage}
+        onPress={handleGoToPreviousPage}
         size="md"
         variant="outline"
       >
@@ -40,7 +48,7 @@ const MoviesListFooter: React.FC<Props> = ({
         action="primary"
         isDisabled={currentPage === totalPages}
         isFocusVisible={false}
-        onPress={onNextPage}
+        onPress={handleGoToNextPage}
         size="md"
         variant="outline"
       >

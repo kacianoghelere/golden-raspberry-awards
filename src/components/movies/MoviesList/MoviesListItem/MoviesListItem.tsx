@@ -19,49 +19,39 @@ export interface Props {
 const MoviesListItem: React.FC<Props> = ({ movie }) => (
   <Box
     borderBottomColor="$coolGray200"
-    borderBottomWidth='$1'
-    py='$3'
-    px='$4'
+    borderBottomWidth="$1"
+    padding="$3"
   >
     <HStack
-      justifyContent='space-between'
-      space='md'
+      justifyContent="space-between"
+      space="md"
     >
-      <VStack>
+      <VStack flex={3}>
         <Text
-          color='$coolGray800'
-          fontWeight='$bold'
-          sx={{
-            _dark: {
-              color: '$warmGray100'
-            }
-          }}
+          color="$coolGray800"
+          fontWeight="$bold"
         >
           {movie.title}
         </Text>
-        <Text
-          color='$coolGray600'
-          sx={{
-            _dark: {
-              color: '$warmGray200'
-            }
-          }}
-        >
+        <Text color="$coolGray600">
           {movie.studios.join(', ')}
         </Text>
       </VStack>
-      <VStack justifyContent="flex-start">
+      <VStack
+        flex={1}
+        justifyContent="flex-start"
+      >
         <Text
-          alignSelf='flex-end'
-          color='$coolGray800'
-          fontSize='$xs'
+          alignSelf="flex-end"
+          color="$coolGray800"
+          fontSize="$sm"
         >
           {movie.year}
         </Text>
         {movie.winner ? (
           <Badge
             action="info"
-            borderRadius="$none"
+            borderRadius="$full"
             size="md"
             variant="outline"
           >

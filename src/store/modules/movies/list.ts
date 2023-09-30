@@ -3,10 +3,7 @@ import { AsyncThunk, SerializedError, createAsyncThunk, createSlice } from '@red
 import { MoviesList } from '~/@types/movies'
 import { MoviesListState } from '~/@types/store/modules/movies/list'
 import { RootState } from '~/store'
-import {
-  GetMoviesListParams,
-  getMoviesList
-} from '~/utils/services/movies-service'
+import { getMoviesList } from '~/utils/services/movies-service'
 
 const initialState: MoviesListState = {
   data: undefined,
@@ -16,10 +13,10 @@ const initialState: MoviesListState = {
 
 const moduleName = 'movies/list'
 
-const fetchMovies = createAsyncThunk<MoviesList, GetMoviesListParams>(
+const fetchMovies = createAsyncThunk<MoviesList>(
   `${moduleName}/fetch`,
-  async (params) => {
-    const response = await getMoviesList(params)
+  async () => {
+    const response = await getMoviesList()
 
     return response.data
   }

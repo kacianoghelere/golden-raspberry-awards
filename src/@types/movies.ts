@@ -35,3 +35,8 @@ export interface MoviesList {
   numberOfElements: number,
   empty: boolean
 }
+
+export type MovieWinStatus =
+  | 'all'
+  | 'not-winner'
+  | 'winner'

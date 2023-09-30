@@ -1,19 +1,19 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import WinnersSwitch, { WinnersSwitchProps } from './WinnersSwitch'
+import Input, { Props } from './Input'
 
 const mockComponent = ({
-  onToggle = jest.fn(),
-  value = false
-}: Partial<WinnersSwitchProps> = {}) => (
-  <WinnersSwitch {...{
-    onToggle,
+  onChangeText = jest.fn(),
+  value = ''
+}: Partial<Props> = {}) => (
+  <Input {...{
+    onChangeText,
     value
   }} />
 )
 
-describe('WinnersSwitch', () => {
+describe('Input', () => {
   it('renders without crashing', () => {
     const instance = renderer.create(mockComponent()).toJSON()
 
