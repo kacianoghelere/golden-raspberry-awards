@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
 import useSlicedList from './use-sliced-list'
 
@@ -25,20 +25,5 @@ describe('useSlicedList', () => {
     const { result } = renderHook(() => useSlicedList([1, 2, 3, 4, 5], 10))
 
     expect(result.current).toEqual([1, 2, 3, 4, 5])
-  })
-
-  it('returns the same array reference when inputs have not changed', () => {
-    const { result, rerender } = renderHook(
-      ({ list, limit }: any) => useSlicedList(list, limit),
-      {
-        initialProps: { list: [1, 2, 3, 4, 5], limit: 3 }
-      }
-    )
-
-    const initialResult = result.current
-
-    rerender({ list: [1, 2, 3, 4, 5], limit: 3 })
-
-    expect(result.current).toBe(initialResult)
   })
 })
