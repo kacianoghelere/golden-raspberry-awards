@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Movie, MovieWinStatus } from '~/@types/movies'
 import * as MoviesListModule from '~/store/modules/movies/list'
 import { useDebounce, useDispatch, useSelector } from '~/utils/hooks'
-import { Error } from '~/components/commons'
+import { ErrorIndicator } from '~/components/commons'
 import {
   MoviesList,
   MoviesListHeader
@@ -53,7 +53,7 @@ const MoviesScreen: React.FC = () => {
   }
 
   if (error) return (
-    <Error />
+    <ErrorIndicator />
   )
 
   return (

@@ -1,12 +1,17 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
+import { render } from '~/@tests'
+import { mockHooksConfig } from '~/@tests/mockers/hooks'
 import MoviesScreen from './MoviesScreen'
 
-describe('MoviesScreen', () => {
-  it('renders without crashing', () => {
-    const instance = renderer.create(<MoviesScreen />).toJSON()
+jest.mock('~/utils/hooks', () => mockHooksConfig())
 
-    expect(instance).toBeTruthy()
+const renderComponent = () => render(<MoviesScreen />)
+
+describe('MoviesScreen component', () => {
+  it('renders correctly', () => {
+    const component = renderComponent().toJSON()
+
+    expect(component).toBeTruthy()
   })
 })

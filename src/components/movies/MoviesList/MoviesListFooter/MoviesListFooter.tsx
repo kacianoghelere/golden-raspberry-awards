@@ -27,11 +27,11 @@ const MoviesListFooter: React.FC = () => {
   return (
     <GS.HStack
       alignItems="center"
-      bg="$coolGray200"
+      backgroundColor="$coolGray200"
       gap="$1"
       justifyContent="space-between"
-      px="$4"
-      py="$5"
+      paddingHorizontal="$4"
+      paddingVertical="$5"
     >
       <GS.Button
         action="primary"
@@ -39,6 +39,7 @@ const MoviesListFooter: React.FC = () => {
         isFocusVisible={false}
         onPress={handleGoToPreviousPage}
         size="md"
+        testID="prev-page-button"
         variant="outline"
       >
         <GS.ButtonIcon as={GS.ChevronLeftIcon} />
@@ -50,6 +51,7 @@ const MoviesListFooter: React.FC = () => {
         isFocusVisible={false}
         onPress={handleGoToNextPage}
         size="md"
+        testID="next-page-button"
         variant="outline"
       >
         <GS.ButtonIcon as={GS.ChevronRightIcon} />

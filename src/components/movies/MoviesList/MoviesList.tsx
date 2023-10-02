@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 import { FlatList } from 'react-native'
@@ -14,7 +13,7 @@ export interface Props extends CustomFlatListProps<Movie> {
 }
 
 const MoviesList: React.FC<Props> = ({ movies, ...props }) => (
-  <GS.Box p="$0">
+  <GS.Box>
     <FlatList<Movie>
       {...props}
       data={movies}

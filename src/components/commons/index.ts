@@ -1,5 +1,5 @@
-export { default as Error } from './Error/Error'
+export { default as ErrorIndicator } from './ErrorIndicator/ErrorIndicator'
 
-export { default as Loading } from './Loading/Loading'
+export { default as LoadingIndicator } from './LoadingIndicator/LoadingIndicator'
 
 export { default as Input } from './Input/Input'

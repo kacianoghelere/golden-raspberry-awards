@@ -1,12 +1,24 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
-import MoviesList from './MoviesList'
+import { render } from '~/@tests'
+import { generateMovies } from '~/@tests/generators'
+import { mockHooksConfig } from '~/@tests/mockers/hooks'
+import MoviesList, { Props } from './MoviesList'
 
-describe('MoviesList', () => {
-  it('renders without crashing', () => {
-    const instance = renderer.create(<MoviesList />).toJSON()
+jest.mock('~/utils/hooks', () => mockHooksConfig())
 
-    expect(instance).toBeTruthy()
+const mockedMovies = generateMovies(3)
+
+const renderComponent = ({
+  movies = mockedMovies
+}: Partial<Props> = {}) => render(
+  <MoviesList movies={movies} />
+)
+
+describe('MoviesList component', () => {
+  it('renders correctly', () => {
+    const component = renderComponent().toJSON()
+
+    expect(component).toBeTruthy()
   })
 })

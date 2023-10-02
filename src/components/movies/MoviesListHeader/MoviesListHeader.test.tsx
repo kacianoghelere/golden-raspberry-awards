@@ -1,19 +1,11 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
-import MoviesListHeader, { MoviesListHeaderProps } from './MoviesListHeader'
-
-const mockComponent = ({
-  onSearch = jest.fn()
-}: Partial<MoviesListHeaderProps> = {}) => (
-  <MoviesListHeader {...{
-    onSearch
-  }} />
-)
+import { render } from '~/@tests'
+import MoviesListHeader from './MoviesListHeader'
 
 describe('MoviesListHeader', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(mockComponent()).toJSON()
+    const instance = render(<MoviesListHeader />).toJSON()
 
     expect(instance).toBeTruthy()
   })
