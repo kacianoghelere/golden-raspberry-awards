@@ -6,7 +6,7 @@ import { MoviesListItem, MoviesListItemProps } from './MoviesListItem'
 
 const mockedMovie = generateMovie(2)
 
-const mockComponent = ({
+const renderComponent = ({
   movie = mockedMovie
 }: Partial<MoviesListItemProps> = {}) => (
   <MoviesListItem movie={movie} />
@@ -14,7 +14,7 @@ const mockComponent = ({
 
 describe('MoviesListItem', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(mockComponent()).toJSON()
+    const instance = renderer.create(renderComponent()).toJSON()
 
     expect(instance).toBeTruthy()
   })

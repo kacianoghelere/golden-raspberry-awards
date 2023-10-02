@@ -1,13 +1,13 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
+import { render } from '~/@tests'
 import YearsWithMultipleWinnersListHeader from './YearsWithMultipleWinnersListHeader'
 
-const mockComponent = () => <YearsWithMultipleWinnersListHeader />
+const renderComponent = () => render(<YearsWithMultipleWinnersListHeader />)
 
 describe('YearsWithMultipleWinnersListHeader', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(mockComponent()).toJSON()
+    const instance = renderComponent().toJSON()
 
     expect(instance).toBeTruthy()
   })

@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as YearsWithMultipleWinnersModule from '~/store/modules/dashboard/years-with-multiple-winners'
 import { useDispatch, useSelector, useSlicedList } from '~/utils/hooks'
-import { Error, Loading } from '~/components/commons'
+import { ErrorIndicator, LoadingIndicator } from '~/components/commons'
 import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import YearsWithMultipleWinnersList from './YearsWithMultipleWinnersList/YearsWithMultipleWinnersList'
 
@@ -31,9 +31,9 @@ const YearsWithMultipleWinners: React.FC<Props> = ({
       title="List Years With Multiple Winners"
     >
       {isLoading ? (
-        <Loading />
+        <LoadingIndicator />
       ) : error ? (
-        <Error />
+        <ErrorIndicator />
       ) : yearsWithMultipleWinners ? (
         <YearsWithMultipleWinnersList
           yearsWithMultipleWinners={yearsWithMultipleWinners}

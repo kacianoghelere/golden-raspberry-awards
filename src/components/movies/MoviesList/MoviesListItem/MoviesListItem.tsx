@@ -1,13 +1,4 @@
-import {
-  Badge,
-  BadgeIcon,
-  BadgeText,
-  Box,
-  HStack,
-  StarIcon,
-  Text,
-  VStack
-} from '@gluestack-ui/themed'
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 import { Movie } from '~/@types/movies'
@@ -17,51 +8,51 @@ export interface Props {
 }
 
 const MoviesListItem: React.FC<Props> = ({ movie }) => (
-  <Box
+  <GS.Box
     borderBottomColor="$coolGray200"
     borderBottomWidth="$1"
     padding="$3"
   >
-    <HStack
+    <GS.HStack
       justifyContent="space-between"
       space="md"
     >
-      <VStack flex={3}>
-        <Text
+      <GS.VStack flex={3}>
+        <GS.Text
           color="$coolGray800"
           fontWeight="$bold"
         >
           {movie.title}
-        </Text>
-        <Text color="$coolGray600">
+        </GS.Text>
+        <GS.Text color="$coolGray600">
           {movie.studios.join(', ')}
-        </Text>
-      </VStack>
-      <VStack
+        </GS.Text>
+      </GS.VStack>
+      <GS.VStack
         flex={1}
         justifyContent="flex-start"
       >
-        <Text
+        <GS.Text
           alignSelf="flex-end"
           color="$coolGray800"
           fontSize="$sm"
         >
           {movie.year}
-        </Text>
+        </GS.Text>
         {movie.winner ? (
-          <Badge
+          <GS.Badge
             action="info"
             borderRadius="$full"
             size="md"
             variant="outline"
           >
-            <BadgeText>Winner</BadgeText>
-            <BadgeIcon as={StarIcon} ml="$2" />
-          </Badge>
+            <GS.BadgeText>Winner</GS.BadgeText>
+            <GS.BadgeIcon as={GS.StarIcon} ml="$2" />
+          </GS.Badge>
         ) : null}
-      </VStack>
-    </HStack>
-  </Box>
+      </GS.VStack>
+    </GS.HStack>
+  </GS.Box>
 )
 
 export { MoviesListItem }

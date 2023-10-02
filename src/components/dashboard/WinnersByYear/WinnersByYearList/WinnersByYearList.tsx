@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 

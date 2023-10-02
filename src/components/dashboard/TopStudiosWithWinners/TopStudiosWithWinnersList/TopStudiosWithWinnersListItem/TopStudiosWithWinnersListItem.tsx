@@ -1,4 +1,4 @@
-import { HStack, Text } from '@gluestack-ui/themed'
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 import { StudioWithWinCount } from '~/@types/dashboard'
@@ -10,16 +10,16 @@ export interface Props {
 const TopStudiosWithWinnersListItem: React.FC<Props> = ({
   studioWithWinCount
 }) => (
-  <HStack
+  <GS.HStack
     borderTopColor="$trueGray300"
     borderTopWidth="$1"
     justifyContent='space-between'
     padding="$3"
     space='md'
   >
-    <Text>{studioWithWinCount.name}</Text>
-    <Text>{studioWithWinCount.winCount}</Text>
-  </HStack>
+    <GS.Text testID="studio-name">{studioWithWinCount.name}</GS.Text>
+    <GS.Text testID="studio-win-count">{studioWithWinCount.winCount}</GS.Text>
+  </GS.HStack>
 )
 
 export { TopStudiosWithWinnersListItem }

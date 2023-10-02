@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 
 import Input, { Props } from './Input'
 
-const mockComponent = ({
+const renderComponent = ({
   onChangeText = jest.fn(),
   value = ''
 }: Partial<Props> = {}) => (
@@ -15,7 +15,7 @@ const mockComponent = ({
 
 describe('Input', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(mockComponent()).toJSON()
+    const instance = renderer.create(renderComponent()).toJSON()
 
     expect(instance).toBeTruthy()
   })

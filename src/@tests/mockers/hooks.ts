@@ -1,7 +1,10 @@
+import useSlicedList from '~/utils/hooks/use-sliced-list'
+
 const baseHooksConfig = {
-  useDispatch: () => jest.fn,
-  useDebounce: () => jest.fn,
-  useSelector: jest.fn(() => ({}))
+  useDispatch: () => jest.fn(),
+  useDebounce: () => jest.fn((callback) => callback()),
+  useSelector: jest.fn(() => ({})),
+  useSlicedList
 }
 
 type HooksConfig = typeof baseHooksConfig

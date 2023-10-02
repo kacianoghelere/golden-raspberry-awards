@@ -1,22 +1,27 @@
 import * as GS from '@gluestack-ui/themed'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { WinIntervalForProducers } from '~/@types/dashboard'
 
-export interface Props {
+export interface Props extends ComponentProps<typeof GS.VStack> {
   title: 'Maximum' | 'Minimum',
   intervalInfo: WinIntervalForProducers
 }
 
 const WinIntervalInfo: React.FC<Props> = ({
   title,
-  intervalInfo
+  intervalInfo,
+  ...props
 }) => (
-  <GS.VStack marginTop="$3">
+  <GS.VStack
+    {...props}
+    marginTop="$3"
+  >
     <GS.Text
       fontSize="$lg"
       fontWeight="$bold"
       marginBottom="$3"
+      testID="interval-title"
     >
       {title}
     </GS.Text>
@@ -44,9 +49,9 @@ const WinIntervalInfo: React.FC<Props> = ({
         padding="$3"
         space='md'
       >
-        <GS.Text>{intervalInfo.producer}</GS.Text>
-        <GS.Text>
-          {intervalInfo.previousWin}~{intervalInfo.followingWin}
+        <GS.Text testID="producer-name">{intervalInfo.producer}</GS.Text>
+        <GS.Text testID="win-interval">
+          {`${intervalInfo.previousWin}~${intervalInfo.followingWin}`}
         </GS.Text>
       </GS.HStack>
     </GS.Box>

@@ -17,8 +17,8 @@ const WinnersByYearListItem: React.FC<Props> = ({
     padding="$3"
     space='md'
   >
-    <GS.Text>{movie.year}</GS.Text>
-    <GS.Text>{movie.title}</GS.Text>
+    <GS.Text testID="winner-movie-year">{movie.year}</GS.Text>
+    <GS.Text testID="winner-movie-title">{movie.title}</GS.Text>
   </GS.HStack>
 )
 

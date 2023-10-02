@@ -40,11 +40,15 @@ const WinnersByYearListHeader: React.FC<Props> = ({
             <GS.InputField
               onChangeText={(text) => setYear(text)}
               placeholder="Ex: 1981"
+              testID="search-field"
               value={`${year}`}
             />
           </GS.Input>
         </GS.Box>
-        <GS.Button onPress={handleOnSearch}>
+        <GS.Button
+          onPress={handleOnSearch}
+          testID="search-button"
+        >
           <GS.ButtonIcon as={GS.SearchIcon} />
         </GS.Button>
       </GS.HStack>

@@ -1,12 +1,12 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
+import { render } from '~/@tests'
 import DashboardWidget, { Props } from './DashboardWidget'
 
-const mockComponent = ({
+const renderComponent = ({
   onMount = jest.fn(),
   title = 'Widget'
-}: Partial<Props> = {}) => (
+}: Partial<Props> = {}) => render(
   <DashboardWidget {...{
     onMount,
     title
@@ -15,7 +15,7 @@ const mockComponent = ({
 
 describe('DashboardWidget', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(mockComponent()).toJSON()
+    const instance = renderComponent().toJSON()
 
     expect(instance).toBeTruthy()
   })

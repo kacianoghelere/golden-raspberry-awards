@@ -8,12 +8,12 @@ jest.mock('~/utils/services/dashboard-service')
 const mockedGetWinnerMoviesByYear =
   getWinnerMoviesByYear as jest.MockedFunction<typeof getWinnerMoviesByYear>
 
-const mockedResponse = generateMovies(5)
+const mockedMovies = generateMovies(5)
 
 describe('"Winner movies by year" State Module', () => {
   beforeEach(() => {
     mockedGetWinnerMoviesByYear.mockResolvedValue({
-      data: mockedResponse
+      data: mockedMovies
     } as any)
   })
 
@@ -28,7 +28,7 @@ describe('"Winner movies by year" State Module', () => {
 
     const { dashboard: { winnerMoviesByYear } } = store.getState()
 
-    expect(winnerMoviesByYear.data).toBe(mockedResponse)
+    expect(winnerMoviesByYear.data).toBe(mockedMovies)
 
     expect(winnerMoviesByYear.isLoading).toBe(false)
 

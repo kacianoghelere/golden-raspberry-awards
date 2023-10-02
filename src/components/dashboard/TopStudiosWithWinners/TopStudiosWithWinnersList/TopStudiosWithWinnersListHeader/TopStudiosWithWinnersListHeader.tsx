@@ -1,8 +1,8 @@
-import { HStack, Text } from '@gluestack-ui/themed'
+import * as GS from '@gluestack-ui/themed'
 import React from 'react'
 
 const TopStudiosWithWinnersListHeader: React.FC = () => (
-  <HStack
+  <GS.HStack
     backgroundColor="$coolGray50"
     borderBottomColor="$coolGray100"
     borderBottomWidth="$1"
@@ -12,9 +12,9 @@ const TopStudiosWithWinnersListHeader: React.FC = () => (
     padding="$3"
     space='md'
   >
-    <Text fontWeight='$bold'>Studio</Text>
-    <Text fontWeight='$bold'>Win Count</Text>
-  </HStack>
+    <GS.Text fontWeight='$bold'>Studio</GS.Text>
+    <GS.Text fontWeight='$bold'>Win Count</GS.Text>
+  </GS.HStack>
 )
 
 export default TopStudiosWithWinnersListHeader

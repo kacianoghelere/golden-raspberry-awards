@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as IntervalBetweenWinsModule from '~/store/modules/dashboard/max-min-win-interval-for-producers'
 import { useDispatch, useSelector } from '~/utils/hooks'
-import { Error, Loading } from '~/components/commons'
+import { ErrorIndicator, LoadingIndicator } from '~/components/commons'
 import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import WinIntervalInfo from './WinIntervalInfo/WinIntervalInfo'
 
@@ -23,18 +23,20 @@ const IntervalBetweenWins: React.FC = () => {
       title="Producers with longest ands shortest interval between wins"
     >
       {isLoading ? (
-        <Loading />
+        <LoadingIndicator />
       ) : error ? (
-        <Error />
+        <ErrorIndicator />
       ) : data ? (
         <>
           <WinIntervalInfo
-            title="Maximum"
             intervalInfo={data.max[0]}
+            testID="max-win-interval-info"
+            title="Maximum"
           />
           <WinIntervalInfo
-            title="Minimum"
             intervalInfo={data.min[0]}
+            testID="min-win-interval-info"
+            title="Minimum"
           />
         </>
       ) : null}

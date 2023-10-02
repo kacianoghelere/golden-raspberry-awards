@@ -17,8 +17,12 @@ const YearsWithMultipleWinnersListItem: React.FC<Props> = ({
     padding="$3"
     space='md'
   >
-    <GS.Text>{yearWithMultipleWinners.year}</GS.Text>
-    <GS.Text>{yearWithMultipleWinners.winnerCount}</GS.Text>
+    <GS.Text testID="year-with-multiple-winners">
+      {yearWithMultipleWinners.year}
+    </GS.Text>
+    <GS.Text testID="winner-count">
+      {yearWithMultipleWinners.winnerCount}
+    </GS.Text>
   </GS.HStack>
 )
 
