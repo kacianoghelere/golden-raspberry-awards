@@ -15,7 +15,6 @@
 - Para verificar as tipages do projeto, execute `npm run tsc`
 - Para executar os testes do projeto, execute `npm run test`
 
-![Captura de tela 2023-10-02 154921](https://github.com/kacianoghelere/golden-raspberry-awards/assets/4911357/f8a4d51e-33ae-40bc-82d7-a191cbd8322f)
+![Captura de tela 2023-10-02 154921](https://github.com/kacianoghelere/golden-raspberry-awards/assets/4911357/f774b998-0aed-46bb-9565-3838b70cf88a)
 
-# Exemplo
-https://github.com/kacianoghelere/golden-raspberry-awards/assets/4911357/1e7749f1-bcfa-4b27-b3a4-49923e190f20
+https://github.com/kacianoghelere/golden-raspberry-awards/assets/4911357/bc372c95-55e6-4c55-9970-608f13c8a5e2
