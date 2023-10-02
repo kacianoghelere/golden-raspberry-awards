@@ -1,24 +1,64 @@
-import reducer, { AsyncActions } from './max-min-win-interval-for-producers'
+import { MaxMinWinIntervalForProducers } from '~/@types/dashboard'
+import { store } from '~/store'
+import { getMaxMinWinIntervalForProducers } from '~/utils/services/dashboard-service'
+import { AsyncActions } from './max-min-win-interval-for-producers'
 
-describe('max-min-win-interval-for-producers slice', () => {
-  describe('AsyncActions.fetchData', () => {
-    it('should set isLoading to true when pending', () => {
-      const state = reducer(undefined, AsyncActions.fetchData.pending())
-      expect(state.isLoading).toBe(true)
-    })
+jest.mock('~/utils/services/dashboard-service')
 
-    it('should set data and isLoading to false when fulfilled', () => {
-      const mockData = { max: 10, min: 5, interval: 2 }
-      const state = reducer(undefined, AsyncActions.fetchData.fulfilled(mockData))
-      expect(state.data).toEqual(mockData)
-      expect(state.isLoading).toBe(false)
-    })
+const mockedGetMaxMinWinIntervalForProducers =
+  getMaxMinWinIntervalForProducers as jest.MockedFunction<typeof getMaxMinWinIntervalForProducers>
 
-    it('should set error and isLoading to false when rejected', () => {
-      const mockError = { message: 'Something went wrong' }
-      const state = reducer(undefined, AsyncActions.fetchData.rejected(mockError))
-      expect(state.error).toEqual(mockError)
-      expect(state.isLoading).toBe(false)
-    })
+const mockedResponse: MaxMinWinIntervalForProducers = {
+  max: [{
+    followingWin: 2015,
+    interval: 13,
+    previousWin: 2002,
+    producer: 'Matthew Vaughn'
+  }],
+  min: [{
+    followingWin: 1991,
+    interval: 1,
+    previousWin: 1990,
+    producer: 'Joel Silver'
+  }]
+}
+
+describe('"Max and min win interval for producers" State Module', () => {
+  beforeEach(() => {
+    mockedGetMaxMinWinIntervalForProducers.mockResolvedValue({
+      data: mockedResponse
+    } as any)
+  })
+
+  afterEach(() => {
+    mockedGetMaxMinWinIntervalForProducers.mockClear()
+  })
+
+  it('fetches data correctly', async () => {
+    await store.dispatch(AsyncActions.fetchData())
+
+    const { dashboard: { maxMinWinIntervalForProducers } } = store.getState()
+
+    expect(maxMinWinIntervalForProducers.data).toBe(mockedResponse)
+
+    expect(maxMinWinIntervalForProducers.isLoading).toBe(false)
+
+    expect(mockedGetMaxMinWinIntervalForProducers).toBeCalled()
+  })
+
+  it('handles error on fail', async () => {
+    const error = new Error('Unknown Error')
+
+    mockedGetMaxMinWinIntervalForProducers.mockRejectedValue(error)
+
+    await store.dispatch(AsyncActions.fetchData())
+
+    const { dashboard: { maxMinWinIntervalForProducers } } = store.getState()
+
+    expect(maxMinWinIntervalForProducers.error!.message).toBe(error.message)
+
+    expect(maxMinWinIntervalForProducers.isLoading).toBe(false)
+
+    expect(mockedGetMaxMinWinIntervalForProducers).toBeCalled()
   })
 })
