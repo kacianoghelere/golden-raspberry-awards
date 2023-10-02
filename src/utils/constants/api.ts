@@ -1,0 +1,1 @@
+export const API_BASE_URL = 'https://tools.texoit.com/backend-java/api/movies'

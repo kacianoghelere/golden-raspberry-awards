@@ -1,20 +1,37 @@
+import { GluestackUIProvider, config } from '@gluestack-ui/themed'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { NavigationContainer } from '@react-navigation/native'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { Provider } from 'react-redux'
 
-const App: React.FC = () => (
-  <View style={styles.container}>
-    <Text>Golden Raspberry Awards</Text>
-    <StatusBar style="auto" />
-  </View>
-)
+import { store } from '~/store'
+import { DashboardScreen, MoviesScreen } from '~/screens'
 
-export default App
+const Drawer = createDrawerNavigator()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+const queryClient = new QueryClient()
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <GluestackUIProvider config={config.theme}>
+        <QueryClientProvider client={queryClient}>
+          <StatusBar style='auto' />
+          <NavigationContainer>
+            <Drawer.Navigator initialRouteName='Dashboard'>
+              <Drawer.Screen
+                component={DashboardScreen}
+                name='Dashboard'
+              />
+              <Drawer.Screen
+                component={MoviesScreen}
+                name='Movies'
+              />
+            </Drawer.Navigator>
+          </NavigationContainer>
+        </QueryClientProvider>
+      </GluestackUIProvider>
+    </Provider>
+  )
+}
