@@ -1,12 +1,12 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 
+import { render } from '~/@tests'
 import Input, { Props } from './Input'
 
 const renderComponent = ({
   onChangeText = jest.fn(),
   value = ''
-}: Partial<Props> = {}) => (
+}: Partial<Props> = {}) => render(
   <Input {...{
     onChangeText,
     value
@@ -15,7 +15,7 @@ const renderComponent = ({
 
 describe('Input', () => {
   it('renders without crashing', () => {
-    const instance = renderer.create(renderComponent()).toJSON()
+    const instance = renderComponent().toJSON()
 
     expect(instance).toBeTruthy()
   })

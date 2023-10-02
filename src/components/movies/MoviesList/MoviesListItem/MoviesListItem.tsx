@@ -21,10 +21,14 @@ const MoviesListItem: React.FC<Props> = ({ movie }) => (
         <GS.Text
           color="$coolGray800"
           fontWeight="$bold"
+          testID="movie-title"
         >
           {movie.title}
         </GS.Text>
-        <GS.Text color="$coolGray600">
+        <GS.Text
+          color="$coolGray600"
+          testID="movie-studios"
+        >
           {movie.studios.join(', ')}
         </GS.Text>
       </GS.VStack>
@@ -36,6 +40,7 @@ const MoviesListItem: React.FC<Props> = ({ movie }) => (
           alignSelf="flex-end"
           color="$coolGray800"
           fontSize="$sm"
+          testID="movie-year"
         >
           {movie.year}
         </GS.Text>
@@ -45,6 +50,7 @@ const MoviesListItem: React.FC<Props> = ({ movie }) => (
             borderRadius="$full"
             size="md"
             variant="outline"
+            testID="movie-winner-badge"
           >
             <GS.BadgeText>Winner</GS.BadgeText>
             <GS.BadgeIcon as={GS.StarIcon} ml="$2" />

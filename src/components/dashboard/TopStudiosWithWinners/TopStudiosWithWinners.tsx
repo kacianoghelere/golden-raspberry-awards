@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as StudiosWithWinCountModule from '~/store/modules/dashboard/studios-with-win-count'
 import { useDispatch, useSelector, useSlicedList } from '~/utils/hooks'
-import { Error, Loading } from '~/components/commons'
+import { ErrorIndicator, LoadingIndicator } from '~/components/commons'
 import DashboardWidget from '../DashboardWidget/DashboardWidget'
 import TopStudiosWithWinnersList from './TopStudiosWithWinnersList/TopStudiosWithWinnersList'
 
@@ -29,9 +29,9 @@ const TopStudiosWithWinners: React.FC<Props> = ({ limit = 3 }) => {
       title={`Top ${limit} Studios With Winners`}
     >
       {isLoading ? (
-        <Loading />
+        <LoadingIndicator />
       ) : error ? (
-        <Error />
+        <ErrorIndicator />
       ) : data ? (
         <TopStudiosWithWinnersList studiosWithWinCount={topStudios} />
       ) : null}
