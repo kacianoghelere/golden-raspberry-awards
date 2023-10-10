@@ -58,12 +58,28 @@ const WinnersByYearListHeader: React.FC<Props> = ({
         borderBottomWidth="$1"
         borderTopLeftRadius="$lg"
         borderTopRightRadius="$lg"
-        justifyContent='space-between'
+        justifyContent="space-between"
         padding="$3"
-        space='md'
+        space="md"
       >
-        <GS.Text fontWeight='$bold'>Year</GS.Text>
-        <GS.Text fontWeight='$bold'>Title</GS.Text>
+        <GS.Text
+          flex={2}
+          fontWeight="$bold"
+        >
+          Id
+        </GS.Text>
+        <GS.Text
+          flex={2}
+          fontWeight="$bold"
+        >
+          Year
+        </GS.Text>
+        <GS.Text
+          flex={8}
+          fontWeight="$bold"
+        >
+          Title
+        </GS.Text>
       </GS.HStack>
     </GS.VStack>
   )

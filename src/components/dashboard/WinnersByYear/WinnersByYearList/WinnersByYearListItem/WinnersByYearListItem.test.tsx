@@ -22,6 +22,10 @@ describe('WinnersByYearListItem', () => {
   it('renders data correctly', () => {
     const instance = renderComponent().root
 
+    const winnerMovieId = instance.findByProps({ testID: 'winner-movie-id' })
+
+    expect(winnerMovieId.props.children).toBe(mockedMovie.id)
+
     const winnerMovieYear = instance.findByProps({ testID: 'winner-movie-year' })
 
     expect(winnerMovieYear.props.children).toBe(mockedMovie.year)

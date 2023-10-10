@@ -22,6 +22,10 @@ describe('MoviesListItem', () => {
   it('renders data correctly', () => {
     const instance = renderComponent().root
 
+    const movieId = instance.findByProps({ testID: 'movie-id' })
+
+    expect(movieId.props.children).toBe(mockedMovie.id)
+
     const movieTitle = instance.findByProps({ testID: 'movie-title' })
 
     expect(movieTitle.props.children).toBe(mockedMovie.title)

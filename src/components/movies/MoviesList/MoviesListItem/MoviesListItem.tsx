@@ -14,9 +14,17 @@ const MoviesListItem: React.FC<Props> = ({ movie }) => (
     padding="$3"
   >
     <GS.HStack
+      alignContent="center"
       justifyContent="space-between"
       space="md"
     >
+      <GS.Text
+        color="$coolGray800"
+        fontWeight="$bold"
+        testID="movie-id"
+      >
+        {movie.id}
+      </GS.Text>
       <GS.VStack flex={3}>
         <GS.Text
           color="$coolGray800"

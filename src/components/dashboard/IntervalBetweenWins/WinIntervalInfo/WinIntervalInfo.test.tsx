@@ -45,8 +45,12 @@ describe('WinIntervalInfo component', () => {
 
     const winIntervalText = testInstance.findByProps({ testID: 'win-interval' })
 
+    const mockedIntervalLabel = mockedIntervalInfo.interval === 1
+      ? '1 year'
+      : `${mockedIntervalInfo.interval} years`
+
     expect(winIntervalText.props.children).toEqual(
-      `${mockedIntervalInfo.previousWin}~${mockedIntervalInfo.followingWin}`
+      `${mockedIntervalLabel} (${mockedIntervalInfo.previousWin}~${mockedIntervalInfo.followingWin})`
     )
   })
 })

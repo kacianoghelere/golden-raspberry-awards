@@ -13,7 +13,7 @@ const YearsWithMultipleWinnersListHeader: React.FC = () => (
     space='md'
   >
     <GS.Text fontWeight='$bold'>Year</GS.Text>
-    <GS.Text fontWeight='$bold'>Winner Count</GS.Text>
+    <GS.Text fontWeight='$bold'>Win Count</GS.Text>
   </GS.HStack>
 )
 
